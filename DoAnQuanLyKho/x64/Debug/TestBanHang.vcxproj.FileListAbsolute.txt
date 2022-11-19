@@ -1,0 +1,2 @@
+E:\TestBanHang\x64\Debug\TestBanHang.exe
+E:\DoAnQuanLyKho\x64\Debug\TestBanHang.exe

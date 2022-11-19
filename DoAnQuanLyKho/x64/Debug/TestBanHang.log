@@ -1,0 +1,13 @@
+﻿  main.cpp
+E:\DoAnQuanLyKho\main.cpp(532,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(532,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(532,72): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(532,93): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(532,115): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(850,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(850,50): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(850,71): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(850,92): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(850,114): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+E:\DoAnQuanLyKho\main.cpp(651,75): warning C4101: 'vitrimathang': unreferenced local variable
+  TestBanHang.vcxproj -> E:\DoAnQuanLyKho\x64\Debug\TestBanHang.exe
