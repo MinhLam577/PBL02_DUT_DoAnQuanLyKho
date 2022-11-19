@@ -1,2 +1,2 @@
 # PBL02_DUT_DoAnQuanLyKho
-OOP
+Home inventory management software
