@@ -863,12 +863,11 @@ int main()
 							<< setw(t - lmh[lmh.size() - 1]->Get_tenmh().length() + 30 - s + lmh[lmh.size() - 1]->Get_soluongmh().length())
 							<< lmh[lmh.size() - 1]->Get_soluongmh() << setw(s - lmh[lmh.size() - 1]->Get_soluongmh().length() + 30 - d + lmh[lmh.size() - 1]->Get_DonGia().length()) << lmh[lmh.size() - 1]->Get_DonGia()
 							<< setw(d - lmh[lmh.size() - 1]->Get_DonGia().length() + 30 - nx + curdate.length()) << curdate << "\n\n";
-						char Bang2[][30] = { "Ten Loai Mat Hang Nhap" };
-						Fileout << Bang2[0] << "\n";
 					}
+					char Bang2[][30] = { "Ten Loai Mat Hang Nhap" };
+					Fileout << Bang2[0] << "\n";
 					for (int i = 0; i < LMH.size(); i++)
 					{
-
 						Fileout << LMH[i]->Get_tenloaiMh() << "\n";
 					}
 					Fileout.close();
