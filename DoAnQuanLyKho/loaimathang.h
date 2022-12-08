@@ -30,6 +30,8 @@ public:
 	int NhapThemTuFile(ifstream&);
 	void InsertMatHang(int, mathang*);
 	void EraseMatHang(int);
+	void Max_heapify(int, int);
+	void Heapsort(int);
 	void SapXepMatHang();
 	void SetMatHang(int, mathang*);
 	int TimKiemMatHang(string);

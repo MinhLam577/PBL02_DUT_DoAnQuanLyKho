@@ -261,16 +261,32 @@ void loaimathang::SetMatHang(int vitrimathang, mathang* x)
 }
 void loaimathang::SapXepMatHang()
 {
-	for (int i = 0; i < List_Mh.size() - 1; i++)
+	Heapsort(List_Mh.size());
+}
+void loaimathang::Max_heapify(int n, int i)
+{
+	int largest = i;
+	int left = 2 * i + 1;
+	int right = 2 * i + 2;
+	if (left < n && stoi(List_Mh[left]->Get_DonGia()) > stoi(List_Mh[largest]->Get_DonGia()))
+		largest = left;
+	if (right < n && stoi(List_Mh[right]->Get_DonGia()) > stoi(List_Mh[largest]->Get_DonGia()))
+		largest = right;
+	if (largest != i)
 	{
-		for (int j = i + 1; j < List_Mh.size(); j++)
-		{
-			int a = stoi(List_Mh[i]->Get_DonGia());
-			int b = stoi(List_Mh[j]->Get_DonGia());
-			if (a > b)
-			{
-				swap(List_Mh[i], List_Mh[j]);
-			}
-		}
+		swap(List_Mh[i], List_Mh[largest]);
+		Max_heapify(n, largest);
+	}
+}
+void loaimathang::Heapsort(int n)
+{
+	for (int i = n / 2 - 1; i >= 0; i--)
+	{
+		Max_heapify(n, i);
+	}
+	for (int i = n - 1; i >= 0; i--)
+	{
+		swap(List_Mh[0], List_Mh[i]);
+		Max_heapify(i, 0);
 	}
 }
