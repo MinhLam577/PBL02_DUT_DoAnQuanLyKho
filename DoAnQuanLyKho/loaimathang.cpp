@@ -164,9 +164,36 @@ int loaimathang::NhapThemTuFile(ifstream& filein)
 	}
 	while (!mathang::filein.eof())
 	{
-		mathang* x = new MatHangRong;
-		x->Nhapfile();
-		List_Mh.push_back(x);
+		if (Inhoa(tenloaiMh) == Inhoa("thuocla"))
+		{
+			mathang* x = new Mathangthuocla;
+			x->Nhapfile();
+			List_Mh.push_back(x);
+		}
+		else if (Inhoa(tenloaiMh) == Inhoa("bia"))
+		{
+			mathang* x = new Mathangbia;
+			x->Nhapfile();
+			List_Mh.push_back(x);
+		}
+		else if (Inhoa(tenloaiMh) == Inhoa("ruou"))
+		{
+			mathang* x = new Mathangruou;
+			x->Nhapfile();
+			List_Mh.push_back(x);
+		}
+		else if (Inhoa(tenloaiMh) == Inhoa("nuocngot"))
+		{
+			mathang* x = new Mathangnuocngot;
+			x->Nhapfile();
+			List_Mh.push_back(x);
+		}
+		else
+		{
+			mathang* x = new MatHangRong;
+			x->Nhapfile();
+			List_Mh.push_back(x);
+		}
 	}
 	mathang::filein.close();
 }

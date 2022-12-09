@@ -7,7 +7,7 @@ int main()
 	vector<int> vitriloaimathanghethan; vector<string> tenmathanghethan;
 
 	vector<mathang*> lmh8; vector <int> VITRILOAIMATHANG1; vector<int> VITRILOAIMATHANG2; 
-	vector<int> VITRIMATHANG2; int dongia1 = 0, dongia2 = 0; string mahoadon8; vector<loaimathang*> LMH;
+	vector<int> VITRIMATHANG2; int dongia1 = 0, dongia2 = 0; vector<loaimathang*> LMH; string mahoadon8;
 
 	int dongia = 0; vector<int> VITRILOAIMATHANG; vector<int> VITRIMATHANG; vector<mathang*> lmh7; string mahoadon;
 
@@ -540,17 +540,17 @@ int main()
 						fileout.close();
 						string tenfile = "ChiTietHoaDonXuatMaHoaDon_" + mahoadon + ".txt";
 						ofstream Fileout(tenfile);
-						char Bang[][30] = { "Ma Hoa Don", "Ten Mat Hang Xuat", "So Luong Mat Hang", "Don Gia Mat Hang", "Ngay Xuat" };
-						Fileout << Bang[0] << setw(30) << Bang[1] << setw(30) << Bang[2] << setw(30) << Bang[3] << setw(30) << Bang[4] << "\n";
-						int m = strlen(Bang[0]), t = strlen(Bang[1]), s = strlen(Bang[2]), d = strlen(Bang[3]), nx = strlen(Bang[4]);
+						char Bang[][30] = {"Ten Mat Hang Xuat", "So Luong Mat Hang", "Don Gia Mat Hang", "Ngay Xuat" };
+						Fileout << Bang[0] << setw(30) << Bang[1] << setw(30) << Bang[2] << setw(30) << Bang[3] << "\n";
+						int t = strlen(Bang[0]), s = strlen(Bang[1]), d = strlen(Bang[2]), nx = strlen(Bang[3]);
 						for (int i = 0; i < lmh7.size() - 1; i++)
 						{
-							Fileout << "\n" << mahoadon << setw(m - mahoadon.length() + 30 - t + lmh7[i]->Get_tenmh().length()) << lmh7[i]->Get_tenmh()
+							Fileout << "\n" << lmh7[i]->Get_tenmh()
 								<< setw(t - lmh7[i]->Get_tenmh().length() + 30 - s + lmh7[i]->Get_soluongmh().length())
 								<< lmh7[i]->Get_soluongmh() << setw(s - lmh7[i]->Get_soluongmh().length() + 30 - d + lmh7[i]->Get_DonGia().length()) << lmh7[i]->Get_DonGia()
 								<< setw(d - lmh7[i]->Get_DonGia().length() + 30 - nx + curdate.length()) << curdate << "\n";
 						}
-						Fileout << "\n" << mahoadon << setw(m - mahoadon.length() + 30 - t + lmh7[lmh7.size() - 1]->Get_tenmh().length()) << lmh7[lmh7.size() - 1]->Get_tenmh()
+						Fileout << "\n" << lmh7[lmh7.size() - 1]->Get_tenmh()
 							<< setw(t - lmh7[lmh7.size() - 1]->Get_tenmh().length() + 30 - s + lmh7[lmh7.size() - 1]->Get_soluongmh().length())
 							<< lmh7[lmh7.size() - 1]->Get_soluongmh() << setw(s - lmh7[lmh7.size() - 1]->Get_soluongmh().length() + 30 - d + lmh7[lmh7.size() - 1]->Get_DonGia().length()) << lmh7[lmh7.size() - 1]->Get_DonGia()
 							<< setw(d - lmh7[lmh7.size() - 1]->Get_DonGia().length() + 30 - nx + curdate.length()) << curdate;
@@ -567,7 +567,7 @@ int main()
 		}
 		else if (luachon == "8")
 		{
-			string choice; bool check1 = true, check2 = true; string ngaynhap;
+			string choice; bool check1 = true, check2 = true; string ngaynhap; 
 			system("cls");
 			if (MAHOADONNHAP.size() == 0)
 			{
@@ -622,7 +622,8 @@ int main()
 				} while (choice != "0" && choice != "1" && choice != "2");
 				if (choice == "1")
 				{
-					system("cls");
+					int i = 0;
+					system("cls"); 
 					cout << "\n\t\t\t\t\t\t\t\t\t\t\tDanh sach loai mat hang co san\n\n\n";
 					List.Xuat();
 				Check:
@@ -867,17 +868,17 @@ int main()
 					ofstream Fileout(tenfile);
 					if (lmh8.size() != 0)
 					{
-						char Bang[][30] = { "Ma Hoa Don", "Ten Mat Hang Nhap", "So Luong Mat Hang", "Don Gia Mat Hang", "Ngay Nhap" };
-						Fileout << Bang[0] << setw(30) << Bang[1] << setw(30) << Bang[2] << setw(30) << Bang[3] << setw(30) << Bang[4] << "\n";
-						int m = strlen(Bang[0]), t = strlen(Bang[1]), s = strlen(Bang[2]), d = strlen(Bang[3]), nx = strlen(Bang[4]);
+						char Bang[][30] = {"Ten Mat Hang Nhap", "So Luong Mat Hang", "Don Gia Mat Hang", "Ngay Nhap" };
+						Fileout << Bang[0] << setw(30) << Bang[1] << setw(30) << Bang[2] << setw(30) << Bang[3] << "\n";
+						int t = strlen(Bang[0]), s = strlen(Bang[1]), d = strlen(Bang[2]), nx = strlen(Bang[3]);
 						for (int i = 0; i < lmh8.size() - 1; i++)
 						{
-							Fileout << "\n" << mahoadon8 << setw(m - mahoadon8.length() + 30 - t + lmh8[i]->Get_tenmh().length()) << lmh8[i]->Get_tenmh()
+							Fileout << "\n" << lmh8[i]->Get_tenmh()
 								<< setw(t - lmh8[i]->Get_tenmh().length() + 30 - s + lmh8[i]->Get_soluongmh().length())
 								<< lmh8[i]->Get_soluongmh() << setw(s - lmh8[i]->Get_soluongmh().length() + 30 - d + lmh8[i]->Get_DonGia().length()) << lmh8[i]->Get_DonGia()
 								<< setw(d - lmh8[i]->Get_DonGia().length() + 30 - nx + curdate.length()) << curdate << "\n";
 						}
-						Fileout << "\n" << mahoadon8 << setw(m - mahoadon8.length() + 30 - t + lmh8[lmh8.size() - 1]->Get_tenmh().length()) << lmh8[lmh8.size() - 1]->Get_tenmh()
+						Fileout << "\n" << lmh8[lmh8.size() - 1]->Get_tenmh()
 							<< setw(t - lmh8[lmh8.size() - 1]->Get_tenmh().length() + 30 - s + lmh8[lmh8.size() - 1]->Get_soluongmh().length())
 							<< lmh8[lmh8.size() - 1]->Get_soluongmh() << setw(s - lmh8[lmh8.size() - 1]->Get_soluongmh().length() + 30 - d + lmh8[lmh8.size() - 1]->Get_DonGia().length()) << lmh8[lmh8.size() - 1]->Get_DonGia()
 							<< setw(d - lmh8[lmh8.size() - 1]->Get_DonGia().length() + 30 - nx + curdate.length()) << curdate << "\n\n";
@@ -943,9 +944,6 @@ int main()
 						system("pause");
 						continue;
 					}
-					cout << "\n\t\t\t\t\t\t\t\t\t\t\tMa hoa don: " << mahoadon8 << "\n";
-					cout << "\n\t\t\t\t\t\t\t\t\t\t\tNgay nhap hang: " << curdate << "\n";
-					
 					if (lmh8.size() != 0)
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tTong tat ca cac mat hang da nhap them\n\n";
@@ -974,8 +972,6 @@ int main()
 						system("pause");
 						continue;
 					}
-					cout << "\n\t\t\t\t\t\t\t\t\t\t\tMa hoa don: " << mahoadon << "\n";
-					cout << "\n\t\t\t\t\t\t\t\t\t\t\tNgay xuat: " << curdate << "\n";
 					if (lmh7.size() != 0)
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tDanh sach cac mat hang da xuat\n\n";
