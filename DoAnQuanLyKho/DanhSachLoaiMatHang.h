@@ -20,7 +20,6 @@ public:
 	void EraseLoaiMatHang(string);
 	void SapXepLoaiMatHang();
 	void SapXepMatHang(int);
-	int TimKiemLoaiMatHang(string);
 	loaimathang* operator[](int);
 	int GetSoLuongLoaiMatHang();
 	int TimKiemMatHang(string, int&);
@@ -30,5 +29,6 @@ public:
 	mathang* NhapThemSoLuongMatHangDaCoSan(int, string, int&);
 	mathang* XuatKho(string, int&);
 	void ThongKe(string, vector<int>&, vector<string>&, int&);
+	int binarySearchRecursive(int l, int r, string target);
 };
 #endif

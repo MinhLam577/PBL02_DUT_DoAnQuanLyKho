@@ -72,7 +72,7 @@ void DanhSachLoaiMatHang::NhapThemTuFile()
 		checktrung = false;
 		for (int i = 0; i < list_lmh.GetSoluong(); i++)
 		{
-			if (list_lmh[i]->Get_maloaiMh() == maloaiMh)
+			if (loaimathang::Inhoa(list_lmh[i]->Get_maloaiMh()) == loaimathang::Inhoa(maloaiMh))
 			{
 				cout << "\n\t\t\t\t\t\t\t\t\t\t\tMa loai mat hang da bi trung. Xin nhap lai\n";
 				checktrung = true;
@@ -131,14 +131,27 @@ void DanhSachLoaiMatHang::SapXepLoaiMatHang()
 		}
 	}
 }
-int DanhSachLoaiMatHang::TimKiemLoaiMatHang(string tencantim)
+int DanhSachLoaiMatHang::binarySearchRecursive(int l, int r, string target)
 {
-	for (int i = 0; i < list_lmh.GetSoluong(); i++)
-	{
-		if (loaimathang::Inhoa(list_lmh[i]->Get_tenloaiMh()) == loaimathang::Inhoa(tencantim))
-			return i;
+	// RECURSIVE IMPLEMENTATION OF BINARY SEARCH
+	int mid = (l + r) / 2;
+
+	// base case 1 = checks if array is empty or not
+	if (r - l < 0) {
+		return -1;
 	}
-	return -1;
+	// base case 2 = checks if array middle is the target value
+	if (loaimathang::Inhoa(target) == loaimathang::Inhoa(list_lmh[mid]->Get_tenloaiMh())) {
+		return mid;
+	}
+	// recursive case 1 = removes left array
+	else if (loaimathang::Inhoa(target) >= loaimathang::Inhoa(list_lmh[mid]->Get_tenloaiMh())) {
+		return binarySearchRecursive(mid + 1, r, target);
+	}
+	// recursive case 2 = removes right array
+	else {
+		return binarySearchRecursive(l, mid - 1, target);
+	}
 }
 loaimathang* DanhSachLoaiMatHang::operator[](int vitri)
 {
@@ -814,7 +827,7 @@ void DanhSachLoaiMatHang::ThongKe(string yeucau, vector<int>& vitriloaimathanghe
 	int thanghientai = lm->tm_mon + 1;
 	if (yeucau == "1")
 	{
-		vector<mathang*> mh; int cnt = 0;
+		vector<mathang*> mh; int cnt = 0; vector<mathang*> mh1;
 		for (int i = 0; i < list_lmh.GetSoluong(); i++)
 		{
 			loaimathang* x = list_lmh[i];
@@ -823,9 +836,26 @@ void DanhSachLoaiMatHang::ThongKe(string yeucau, vector<int>& vitriloaimathanghe
 				string t = x->operator[](j)->Get_NgayHetHan();
 				if (x->operator[](j)->GetYear(t) == namhientai)
 				{
-					if (x->operator[](j)->GetMonth(t) - namhientai <= 1)
+					if (x->operator[](j)->GetMonth(t) - thanghientai <= 1)
 					{
+						if(x->operator[](j)->GetDay(t) - ngayhientai > 7)
 						mh.push_back(x->operator[](j));
+					}
+				}
+			}
+		}
+		for (int i = 0; i < list_lmh.GetSoluong(); i++)
+		{
+			loaimathang* x = list_lmh[i];
+			for (int j = 0; j < x->GetSoLuongMatHang(); j++)
+			{
+				string t = x->operator[](j)->Get_NgayHetHan();
+				if (x->operator[](j)->GetYear(t) == namhientai)
+				{
+					if (x->operator[](j)->GetMonth(t) == thanghientai)
+					{
+						if(x->operator[](j)->GetDay(t) - ngayhientai <= 7)
+						mh1.push_back(x->operator[](j));
 					}
 				}
 			}
@@ -840,13 +870,28 @@ void DanhSachLoaiMatHang::ThongKe(string yeucau, vector<int>& vitriloaimathanghe
 				}
 			}
 			system("cls");
-			cout << "\n\t\t\t\t\t\t\t\t\t\t\tCac mat hang sap het han su dung(Han su dung duoi 1 thang). Xin luu y\n\n";
+			cout << "\n\t\t\t\t\t\t\t\t\tCac mat hang sap het han su dung(Han su dung duoi 1 thang, tren 1 tuan). Xin luu y\n\n";
 			for (int i = 0; i < mh.size(); i++)
 			{
 				mh[i]->Xuat();
 			}
 		}
-		else
+		if (mh1.size() != 0)
+		{
+			for (int i = 0; i < mh1.size() - 1; i++)
+			{
+				for (int j = i + 1; j < mh1.size(); j++)
+				{
+					if (stoi(mh1[i]->Get_DonGia()) > stoi(mh1[j]->Get_DonGia())) swap(mh1[i], mh1[j]);
+				}
+			}
+			cout << "\n\t\t\t\t\t\t\t\t\tCac mat hang sap het han su dung(Han su dung duoi 1 tuan). Xin luu y\n\n";
+			for (int i = 0; i < mh1.size(); i++)
+			{
+				mh1[i]->Xuat();
+			}
+		}
+		if(mh1.size() == 0 && mh.size() == 0)
 		{
 			system("cls");
 			cout << "\n\t\t\t\t\t\t\t\t\t\t\tKhong co mat hang nao sap het han\n";

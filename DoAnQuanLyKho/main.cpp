@@ -9,7 +9,7 @@ int main()
 	vector<mathang*> lmh8; vector <int> VITRILOAIMATHANG1; vector<int> VITRILOAIMATHANG2; 
 	vector<int> VITRIMATHANG2; int dongia1 = 0, dongia2 = 0; vector<loaimathang*> LMH; string mahoadon8;
 
-	int dongia = 0; vector<int> VITRILOAIMATHANG; vector<int> VITRIMATHANG; vector<mathang*> lmh7; string mahoadon;
+	int dongia; vector<int> VITRILOAIMATHANG; vector<int> VITRIMATHANG; vector<mathang*> lmh7; string mahoadon;
 
 	time_t now = time(0);
 	tm* lm = localtime(&now);
@@ -74,7 +74,7 @@ int main()
 				mathang::NhapChuoi("\n\t\t\t\t\t\t\t\t\t\t\tNhap vao ten loai mat hang can xoa: ", ten);
 				check1 = mathang::CheckName(ten);
 				if (check1 == false) cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai!\n";
-				vitri = List.TimKiemLoaiMatHang(ten);
+				vitri = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang() - 1, ten);
 				if (vitri == -1 && check1 == true)
 				{
 					cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen loai mat hang can xoa khong ton tai. Xin nhap lai!\n";
@@ -95,7 +95,7 @@ int main()
 				mathang::NhapChuoi("\n\t\t\t\t\t\t\t\t\t\t\tNhap vao ten loai mat hang can tim: ", ten);
 				check1 = mathang::CheckName(ten);
 				if (check1 == false) cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai!\n";
-				kq = List.TimKiemLoaiMatHang(ten);
+				kq = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang() - 1, ten);
 				if (kq == -1 && check1 == true)
 				{
 					cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen loai mat hang can tim khong ton tai. Xin nhap lai!\n";
@@ -121,7 +121,7 @@ int main()
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai\n";
 					}
-					vitriloaimathang = List.TimKiemLoaiMatHang(tenloaimathang);
+					vitriloaimathang = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang(), tenloaimathang);
 					if (check1 == true && vitriloaimathang == -1)
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tloai mat hang khong co san. Xin nhap lai\n";
@@ -286,7 +286,7 @@ int main()
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai\n";
 					}
-					vitriloaimathang = List.TimKiemLoaiMatHang(tenloaimathang);
+					vitriloaimathang = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang() - 1, tenloaimathang);
 					if (check1 == true && vitriloaimathang == -1)
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tloai mat hang khong co san. Xin nhap lai\n";
@@ -391,6 +391,7 @@ int main()
 					cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai\n";
 				}
 				vitrimathang = List.TimKiemMatHang(ten, vitriloaimathang);
+				
 				if (vitrimathang == -1 && check1 == true)
 				{
 					cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen mat hang can tim khong ton tai. Xin nhap lai!\n";
@@ -455,7 +456,7 @@ int main()
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai\n";
 					}
-					vitriloaimathang = List.TimKiemLoaiMatHang(tenloaimathang);
+					vitriloaimathang = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang() - 1, tenloaimathang);
 					if (check1 == true && vitriloaimathang == -1)
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tloai mat hang khong co san. Xin nhap lai\n";
@@ -507,7 +508,6 @@ int main()
 							{
 								lmh7[i]->Xuat();
 							}
-							cout << "\n\t\t\t\t\t\t\t\t\t\t\tTong tien thu duoc khi xuat kho: " << dongia << "\n";
 						}
 						if (lmh7.size() != 0)
 						{
@@ -637,7 +637,7 @@ int main()
 					}
 					else
 					{
-						vitri = List.TimKiemLoaiMatHang(l->Get_tenloaiMh());
+						vitri = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang() - 1, l->Get_tenloaiMh());
 						if (vitri != -1)
 						{
 							cout << "\n\t\t\t\t\t\t\t\t\t\t\tLoai mat hang vua them da co san. Xin nhap lai\n";
@@ -679,7 +679,7 @@ int main()
 									{
 										cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai\n";
 									}
-									vitriloaimathang = List.TimKiemLoaiMatHang(tenloaimathang);
+									vitriloaimathang = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang() - 1, tenloaimathang);
 									if (check1 == true && vitriloaimathang == -1)
 									{
 										cout << "\n\t\t\t\t\t\t\t\t\t\t\tloai mat hang khong co san. Xin nhap lai\n";
@@ -756,7 +756,7 @@ int main()
 									{
 										cout << "\n\t\t\t\t\t\t\t\t\t\t\tTen khong hop le. Xin nhap lai\n";
 									}
-									vitriloaimathang = List.TimKiemLoaiMatHang(tenloaimathang);
+									vitriloaimathang = List.binarySearchRecursive(0, List.GetSoLuongLoaiMatHang() - 1, tenloaimathang);
 									if (check1 == true && vitriloaimathang == -1)
 									{
 										cout << "\n\t\t\t\t\t\t\t\t\t\t\tloai mat hang khong co san. Xin nhap lai\n";
@@ -799,7 +799,6 @@ int main()
 									{
 										lmh8[i]->Xuat();
 									}
-									cout << "\n\t\t\t\t\t\t\t\t\t\t\tTong tien phai tra: " << dongia1 + dongia2 << "\n";
 								}
 								if (VITRILOAIMATHANG1.size() != 0)
 								{
@@ -944,6 +943,8 @@ int main()
 						system("pause");
 						continue;
 					}
+					cout << "\n\t\t\t\t\t\t\t\t\t\t\tMa hoa don: " << mahoadon8;
+					cout << "\n\t\t\t\t\t\t\t\t\t\t\tNgay nhap: " << curdate;
 					if (lmh8.size() != 0)
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tTong tat ca cac mat hang da nhap them\n\n";
@@ -951,7 +952,6 @@ int main()
 						{
 							lmh8[i]->Xuat();
 						}
-						cout << "\n\t\t\t\t\t\t\t\t\t\t\tTong tien phai tra: " << dongia1 + dongia2 << "\n";
 					}
 					if (LMH.size() != 0)
 					{
@@ -972,6 +972,8 @@ int main()
 						system("pause");
 						continue;
 					}
+					cout << "\n\t\t\t\t\t\t\t\t\t\t\tMa hoa don: " << mahoadon;
+					cout << "\n\t\t\t\t\t\t\t\t\t\t\tNgay xuat: " << curdate;
 					if (lmh7.size() != 0)
 					{
 						cout << "\n\t\t\t\t\t\t\t\t\t\t\tDanh sach cac mat hang da xuat\n\n";
@@ -979,7 +981,6 @@ int main()
 						{
 							lmh7[i]->Xuat();
 						}
-						cout << "\n\t\t\t\t\t\t\t\t\t\t\tTong tien thu duoc khi xuat kho: " << dongia << "\n";
 					}
 					system("pause");
 				}
